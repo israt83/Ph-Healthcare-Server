@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "npx tsx watch src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./src/**/*.ts"
+    "lint": "eslint ./src/**/*.ts",
+    "migrate" : "npx prisma migrate",
+    "studio" : "npx prisma studio",
+    "generate" : "npx prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +18,7 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
+    "better-auth": "^1.4.18",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
