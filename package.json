@@ -7,9 +7,9 @@
     "dev": "npx tsx watch src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src/**/*.ts",
-    "migrate" : "npx prisma migrate",
-    "studio" : "npx prisma studio",
-    "generate" : "npx prisma generate"
+    "migrate": "npx prisma migrate",
+    "studio": "npx prisma studio",
+    "generate": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
