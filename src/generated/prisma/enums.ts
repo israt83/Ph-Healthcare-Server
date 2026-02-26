@@ -26,3 +26,11 @@ export const userStatus = {
 } as const
 
 export type userStatus = (typeof userStatus)[keyof typeof userStatus]
+
+
+export const gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE'
+} as const
+
+export type gender = (typeof gender)[keyof typeof gender]

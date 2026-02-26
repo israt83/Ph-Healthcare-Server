@@ -2,7 +2,8 @@ import express from "express";
 
 import { IndexRoute } from "./app/routes";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";
-import { notFound } from "./middleware/notfound";
+import { notFound } from "./middleware/notFound";
+
 // import cors from "cors";
 
 
