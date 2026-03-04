@@ -14,7 +14,7 @@ export const checkAuth =
     try {
       // session token verification
       const sessionToken = cookieUtils.getCookie(
-        req,
+        req as any,
         "better-Auth.session_token",
       );
       if (!sessionToken) {
@@ -69,7 +69,7 @@ export const checkAuth =
       }
 
     //   access token verification
-      const accessToken = cookieUtils.getCookie(req, "accessToken");
+      const accessToken = cookieUtils.getCookie(req as any, "accessToken");
       if (!accessToken) {
         throw new AppError(status.UNAUTHORIZED, "Unauthorized");
         

@@ -3,8 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 
 import { prisma } from "./prisma";
 import { Role, userStatus } from "../../generated/prisma/enums";
-import ms, { StringValue } from "ms";
-import { envVars } from "../config/env";
+
 
 
 export const auth = betterAuth({
