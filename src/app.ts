@@ -1,8 +1,9 @@
 import express from "express";
 
 import { IndexRoute } from "./app/routes";
-import { globalErrorHandler } from "./middleware/globalErrorHandler";
-import { notFound } from "./middleware/notFound";
+import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
+import { notFound } from "./app/middleware/notFound";
+import cookieParser from "cookie-parser";
 
 // import cors from "cors";
 
@@ -10,6 +11,7 @@ import { notFound } from "./middleware/notFound";
 const app = express();
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.use('/api/v1' , IndexRoute)
 

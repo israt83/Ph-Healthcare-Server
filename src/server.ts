@@ -1,6 +1,6 @@
 import app from "./app";
 import { prisma } from "./app/lib/prisma";
-import { envVars } from "./config/env";
+import { envVars } from "./app/config/env";
 
 
 async function server() {

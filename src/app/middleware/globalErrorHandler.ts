@@ -3,9 +3,9 @@ import { NextFunction, Request, Response } from "express";
 import status from "http-status";
 import {z} from "zod";
 import { envVars } from "../config/env";
-import { TErrorResponse, TErrorSources } from "../app/interfaces/error.interface";
-import { handleZodError } from "../app/errorHelpers/handleZodError";
-import AppError from "../app/errorHelpers/AppError";
+import { TErrorResponse, TErrorSources } from "../interfaces/error.interface";
+import { handleZodError } from "../errorHelpers/handleZodError";
+import AppError from "../errorHelpers/AppError";
 
 
 
