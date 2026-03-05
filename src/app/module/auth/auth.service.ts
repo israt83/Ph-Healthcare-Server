@@ -1,4 +1,5 @@
-import { userStatus } from "../../../generated/prisma/enums";
+
+import { UserStatus } from "../../../generated/prisma/enums";
 import { auth } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { tokenUtils } from "../../utils/token";
@@ -93,11 +94,11 @@ const loginUser = async (payload :ILoginUserPayload ) =>{
         }
     })
 
-    if(data.user.status === userStatus.BLOCKED){
+    if(data.user.status === UserStatus.BLOCKED){
         throw new Error ('User is blocked')
     }
 
-    if(data.user.isDeleted || data.user.status === userStatus.DELETED){
+    if(data.user.isDeleted || data.user.status === UserStatus.DELETED){
          throw new Error ("User is deleted")
     }
 

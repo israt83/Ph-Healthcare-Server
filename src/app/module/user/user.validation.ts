@@ -1,5 +1,5 @@
 import z from "zod";
-import { gender } from "../../../generated/prisma/browser";
+import { Gender } from "../../../generated/prisma/browser";
 
 export const createDoctorZodSchema = z.object({
   password: z.string().min(6).max(20),
@@ -30,7 +30,7 @@ export const createDoctorZodSchema = z.object({
       .nonnegative("Experience cannot be negative")
       .optional(),
 
-    gender: z.nativeEnum(gender),
+    gender: z.nativeEnum(Gender),
 
     appointmentFee: z
       .number()

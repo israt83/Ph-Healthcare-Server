@@ -1,12 +1,13 @@
 /*eslint-disable @typescript-eslint/no-explicit-any*/
 import { NextFunction, Request, Response } from "express";
-import { Role, userStatus } from "../../generated/prisma/enums";
+
 import { cookieUtils } from "../utils/cookie";
 import AppError from "../errorHelpers/AppError";
 import status from "http-status";
 import { prisma } from "../lib/prisma";
 import { jwtUtils } from "../utils/jwt";
 import { envVars } from "../config/env";
+import { Role, UserStatus } from "../../generated/prisma/enums";
 
 export const checkAuth =
   (...authRoles: Role[]) =>
@@ -49,7 +50,7 @@ export const checkAuth =
             res.setHeader("X-Session-Expires-At", expiresAt.toISOString());
             res.setHeader("X-Time-Remaining", timeRemaining.toString());
           }
-          if(user.status === userStatus.BLOCKED || user.status === userStatus.DELETED){
+          if(user.status === UserStatus.BLOCKED || user.status === UserStatus.DELETED){
             throw new AppError(status.FORBIDDEN, "Your account is blocked or deleted. Please contact support.");
           }
 
