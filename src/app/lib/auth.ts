@@ -36,11 +36,11 @@ export const auth = betterAuth({
                 required: true,
                 defaultValue : false
             },
-            // deletedAt :{
-            //     type:"date",
-            //     required: false,
-            //     defaultValue : null
-            // }
+            deletedAt :{
+                type:"date",
+                required: false,
+                defaultValue : null
+            }
         }
     
     },

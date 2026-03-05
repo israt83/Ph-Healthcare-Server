@@ -1,0 +1,40 @@
+import { catchAsync } from "../../shared/catchAsync";
+import { Request, Response } from "express";
+
+import { sendResponse } from "../../shared/sendResponse";
+import status from "http-status";
+import { adminService } from "./admin.service";
+
+const getAllAdmins = catchAsync(
+    async (req: Request, res: Response) => {
+        const result = await adminService.getAllAdmins();
+
+        sendResponse(res, {
+            httpStatusCode: status.OK,
+            success: true,
+            message: "Admins fetched successfully",
+            data: result,
+        })
+    }
+)
+
+const getAdminById = catchAsync(
+    async (req: Request, res: Response) => {
+        const { id } = req.params;
+
+        const admin = await adminService.getAdminById(id as string);
+
+        sendResponse(res, {
+            httpStatusCode: status.OK,
+            success: true,
+            message: "Admin fetched successfully",
+            data: admin,
+        })
+    }
+)
+
+
+export const AdminController = {
+    getAllAdmins,
+    getAdminById
+}
