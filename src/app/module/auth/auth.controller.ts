@@ -36,7 +36,7 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     httpStatusCode: status.OK,
     success: true,
-    message: "Patient logged in successfully",
+    message: " Logged in successfully",
     data: {
       ...rest,
       token,
