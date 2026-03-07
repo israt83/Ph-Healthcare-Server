@@ -22,14 +22,14 @@ const getRefreshToken = (payload: JwtPayload) => {
   return refreshToken;
 };
 
-const setAccessToken = (res: Response, token: string) => {
+const setAccessTokenCookie = (res: Response, token: string) => {
   
   cookieUtils.setCookie(res, "accessToken", token, {
     httpOnly: true,
     secure: true,
     sameSite: "none",
     path: "/",
-    maxAge: 60 * 60 * 60 * 24,
+    maxAge: 60 * 60 * 24 * 1000,
   });
 };
 
@@ -40,7 +40,7 @@ const setRefreshTokenCookie = (res: Response, token: string) => {
     secure: true,
     sameSite: "none",
     path: "/",
-    maxAge: 60 * 60 * 60 * 24 * 7,
+    maxAge:  60 * 60 * 24 * 1000 * 7,
   });
 };
 
@@ -50,14 +50,14 @@ const setBetterAuthSessionCookie = (res: Response, token: string) => {
     secure: true,
     sameSite: "none",
     path: "/",
-    maxAge: 60 * 60 * 60 * 24,
+    maxAge:  60 * 60 * 24 * 1000,
   });
 };
 
 export const tokenUtils = {
   getAccessToken,
   getRefreshToken,
-  setAccessToken,
+  setAccessTokenCookie,
   setRefreshTokenCookie,
   setBetterAuthSessionCookie,
 };
