@@ -366,18 +366,18 @@ const resetPassword = async (email : string, otp : string, newPassword : string)
         }
     })
 
-    // if (isUserExist.needPasswordChange) {
-    //     await prisma.user.update({
-    //         where: {
-    //             id: isUserExist.id,
-    //         },
-    //         data: {
-    //             needPasswordChange: false,
-    //         }
-    //     })
-    // }
+    if (isUserExist.needPasswordChange) {
+        await prisma.user.update({
+            where: {
+                id: isUserExist.id,
+            },
+            data: {
+                needPasswordChange: false,
+            }
+        })
+    }
 
-    await prisma.session.deleteMany({
+       await prisma.session.deleteMany({
         where:{
             userId : isUserExist.id,
         }
