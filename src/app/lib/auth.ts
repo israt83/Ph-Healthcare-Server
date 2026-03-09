@@ -52,28 +52,46 @@ export const auth = betterAuth({
 
   plugins: [bearer(),
     emailOTP({
-        overrideDefaultEmailVerification: true,
-        async sendVerificationOTP({email,otp,type}) {
-            if(type === 'email-verification'){
-                const user = await prisma.user.findUnique({
+        overrideDefaultEmailVerification: true,   
+        async sendVerificationOTP({email, otp, type}) {
+                if(type === "email-verification"){
+                  const user = await prisma.user.findUnique({
                     where : {
-                        email
+                        email,
                     }
-                })
-                if(user && !user.emailVerified){
+                  })
+                  
+                  if(user && !user.emailVerified){
                     sendEmail({
                         to : email,
-                        subject : 'Verify your email',
-                        templateName : 'otp',
-                        templateData : {
+                        subject : "Verify your email",
+                        templateName : "otp",
+                        templateData :{
                             name : user.name,
-                            otp
+                            otp,
                         }
                     })
+                  }
+                }else if(type === "forget-password"){
+                    const user = await prisma.user.findUnique({
+                        where : {
+                            email,
+                        }
+                    })
+
+                    if(user){
+                        sendEmail({
+                            to : email,
+                            subject : "Password Reset OTP",
+                            templateName : "otp",
+                            templateData :{
+                                name : user.name,
+                                otp,
+                            }
+                        })
+                    }
                 }
-            }
-            
-        },
+            },
         expiresIn: 2 * 60,
         otpLength: 6
     })
