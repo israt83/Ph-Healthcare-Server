@@ -4,7 +4,11 @@ import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 
 const createSpecialty = catchAsync(async (req: Request, res: Response) => {
-  const result = await SpecialtyService.createSpecialty(req.body);
+  const payload =  {
+    ...req.body ,
+    icon : req.file?.path
+  }
+  const result = await SpecialtyService.createSpecialty(payload);
   sendResponse(
     res,
     {
