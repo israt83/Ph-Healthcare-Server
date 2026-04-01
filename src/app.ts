@@ -14,6 +14,7 @@ import cors from "cors";
 // import cors from "cors";
 
 const app = express();
+
 app.set("query parser", (str : string) => qs.parse(str));
 
 app.set("view engine", "ejs");
